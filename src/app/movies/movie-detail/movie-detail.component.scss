@@ -1,0 +1,18 @@
+.title{
+  font-size: 1.4em;
+}
+
+.for_delete{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.for_delete button{
+  margin-left: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 40px;
+}
+
+

@@ -1,0 +1,61 @@
+<div  class="container">
+
+  <h2>Films regardés </h2>
+
+<table  class="table table-striped table-hover  ">
+  <thead class="thead-dark">
+    <tr >
+      <th scope="col">#</th>
+      <th scope="col">Titre</th>
+      <th scope="col">Catégorie</th>
+      <th scope="col">Date d'ajout</th>
+      <th scope="col">Statut</th>
+      <th scope="col">Votre avis</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+
+  <tbody *ngFor="let movie of movies ; let i = index" >
+    <tr *ngIf="movie.watched" [ngClass]="{'table-success': movie.rate > 5 && movie.watched,
+                     'table-warning': movie.rate == 5 && movie.watched,
+                    'table-danger': movie.rate < 5 && movie.watched}" >
+      <th scope="row">{{i +1}}</th>
+      <td>{{movie.title}}</td>
+      <td>{{movie.category}}</td>
+      <td>{{movie.addDate | date: 'dd-MM-yyyy'}}</td>
+      <td><app-movie-status [status]="movie.watched"
+                            [film]="movie"></app-movie-status></td>
+
+
+      <td><app-rating *ngIf="movie.watched"
+                      [rate]="movie.rate"
+                      [film]="movie"></app-rating></td>
+
+      <td>
+            <button class="btn btn-primary btn-sm mr-2" routerLink="/movie_detail/{{movie.movieID}}">Détails</button>
+            <button class="btn btn-danger btn-sm" (click)="onRemoveMovie(movie.movieID)">Supprimer</button>
+          </td>
+
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+  <form class="form-inline" (ngSubmit)="onAddMovie(f)" #f="ngForm">
+    <div class="row">
+      <div class="col">
+        <input type="text" class="form-control" placeholder="Titre (ex: Matrix)" name="title" ngModel required>
+      </div>
+      <div class="col">
+        <input type="text" class="form-control" placeholder="Catégorie (ex: Action)" name="category" ngModel>
+      </div>
+        <button type="submit" class="btn btn-success mb-2"
+                placement="right"
+                disabled
+                ngbTooltip="L'ajout de film à été bloqué pour l'instant">Ajouter</button>
+    </div>
+  </form>
+
+</div>

@@ -1,0 +1,119 @@
+<div class="container">
+  <h1>{{movie.title}}</h1>
+  <p>Date de sortie : {{movie.releaseDate | date: 'dd MMMM yyyy'}}</p>
+
+  <div class="list-group">
+
+          <!-- Gestion des réalisteur-->
+        <a href="#" class="title list-group-item list-group-item-action active" >
+          Réalisateur
+        </a>
+        <div  class="for_delete">
+          <a  href="#" class="list-group-item list-group-item-action">{{movie.realisator}}</a>
+          <button *ngIf="update" class="supprimer btn btn-danger btn-sm"
+                  placement="right"
+                  disabled
+                  ngbTooltip="Désolé, ces données n'ont pas pour vocation d'être supprimable ou modifiable">Supprimer</button>
+        </div>
+
+
+
+
+        <!-- Formulaire ajout d'un réalisateur-->
+          <form *ngIf="update" class="form-inline mt-2">
+                <div class="row">
+                  <div class="col">
+                    <input type="text" class="form-control" placeholder="Prénom" name="firstName" ngModel required>
+                  </div>
+                  <div class="col">
+                    <input type="text" class="form-control" placeholder="Nom" name="lastName" ngModel>
+                  </div>
+                    <button type="submit" class="btn btn-success mb-2"
+                            placement="right"
+                            disabled
+                            ngbTooltip="Désolé, ces données n'ont pas pour vocation d'être supprimable ou modifiable">Ajouter</button>
+                </div>
+          </form>
+          <!-- End gestion des réalisteur-->
+
+
+          <!-- Gestion des acteurs-->
+        <a href="#" class="title list-group-item list-group-item-action active">
+          Acteurs
+        </a>
+          <div *ngFor="let actor of actors" class="for_delete">
+              <a  href="#" class="list-group-item list-group-item-action">{{actor.firstName}} {{actor.lastName}}</a>
+              <button *ngIf="update" class="supprimer btn btn-danger btn-sm"
+                      placement="right"
+                      disabled
+                      ngbTooltip="Désolé, ces données n'ont pas pour vocation d'être supprimable ou modifiable">Supprimer</button>
+          </div>
+
+    <!-- Formulaire ajout d'un acteur-->
+          <form *ngIf="update" class="form-inline mt-2">
+                <div class="row">
+                  <div class="col">
+                    <input type="text" class="form-control" placeholder="Prénom" name="firstName" ngModel required>
+                  </div>
+                  <div class="col">
+                    <input type="text" class="form-control" placeholder="Nom" name="lastName" ngModel>
+                  </div>
+                    <button type="submit" class="btn btn-success mb-2"
+                            placement="right"
+                            disabled
+                            ngbTooltip="Désolé, ces données n'ont pas pour vocation d'être supprimable ou modifiable">Ajouter</button>
+                </div>
+          </form>
+          <!-- End gestion des acteurs-->
+
+
+          <!-- Gestion des synopsis-->
+          <a href="#" class="title list-group-item list-group-item-action active">
+                Synopsis
+              </a>
+
+          <textarea class="list-group-item" placeholder="Aucun synopsis disponible, n'hésitez pas à en ajouter un"
+                    style="color:#1d1c1c" rows="3" readonly>{{movie.synopsis}}</textarea>
+          <!-- Formulaire ajout d'un synopsis-->
+            <form *ngIf="update" class=" mt-2">
+                  <div class="row">
+                    <div class="col">
+
+                    <textarea class="form-control" name="synopsis" rows="4" placeholder="Ajouter un synopsis"
+                              [(ngModel)]="movie.synopsis"></textarea>
+                    </div>
+                  </div>
+            </form>
+          <!-- End gestion du synopsis-->
+
+
+          <!-- Gestion de la critique-->
+          <a href="#" class="title list-group-item list-group-item-action active">
+                Votre critique
+              </a>
+        <textarea class="list-group-item" style="color:#1d1c1c" rows="5" placeholder="Lachez-vous" readonly>{{movie.critique}}</textarea>
+            <!-- Formulaire ajout d'une critique-->
+              <form *ngIf="update" class=" mt-2">
+                    <div class="row">
+                      <div class="col">
+                        <label class="ml-2" for="critique">Rédigez votre avis :</label>
+
+                        <textarea id="critique" class="form-control" rows="5" name="critique" placeholder="Donnez votre avis sur le film"
+                                  [(ngModel)]="movie.critique"></textarea>
+
+                      </div>
+                    </div>
+
+              </form>
+            <!-- End gestion des réalisteur-->
+  </div>
+
+        <!-- Bouton de navigation et activation des formulaires-->
+        <button class="btn btn-outline-dark mt-2 mr-5" routerLink="/movies_to_see">Retour</button>
+        <button *ngIf="!update" class="btn btn-info mt-2" (click)="onActiveForm()">Modifier</button>
+        <button *ngIf="update" class="btn btn-info mt-2" (click)="onActiveForm()">Terminer</button>
+
+
+</div>
+
+

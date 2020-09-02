@@ -1,0 +1,12 @@
+
+<div>
+  <ngb-rating [formControl]="ctrl" (click)="onClick()" >
+
+    <ng-template let-fill="fill">
+      <span class="star" [class.filled]="fill === 100">&#9733;</span>
+    </ng-template>
+
+  </ngb-rating>
+</div>
+
+<pre><b>{{ ctrl.value }}</b> étoiles</pre>

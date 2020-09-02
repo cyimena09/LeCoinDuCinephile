@@ -1,0 +1,7 @@
+
+<button title="Marqué comme vu" *ngIf="status" class="btn btn-success" (click)="onChangeStatus()">
+  <span class="far fa-eye" style="color: #313131"></span></button>
+
+<button title="Marqué comme non vu" *ngIf="!status" class="btn btn-danger" (click)="onChangeStatus()">
+  <span class="far fa-eye-slash" style="color: #313131"></span></button >
+

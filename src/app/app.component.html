@@ -1,0 +1,27 @@
+<div class="truebody">
+
+    <app-header></app-header>
+
+    <div class="body">
+
+         <menu>
+           <ul class="list-group">
+              <li class="list-group-item d-flex justify-content-between align-items-center pl-0">
+                <a class="nav-link" routerLink="/movies_to_see">Films à voir</a>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center pl-0">
+                <a class="nav-link active" routerLink="/movies_ranking">Films regardés</a>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center pl-0">
+                <a class="nav-link" routerLink="/movies_all">Tous les films</a>
+              </li>
+          </ul>
+         </menu>
+
+          <div  class="container mb-5">
+              <router-outlet></router-outlet>
+          </div>
+
+    </div>
+
+</div>
